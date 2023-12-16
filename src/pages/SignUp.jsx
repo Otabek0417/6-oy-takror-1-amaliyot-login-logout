@@ -26,7 +26,7 @@ function SignUp() {
         </label>
         <input
           className=" w-full mb-6  outline-0 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "
-          type="text"
+          type="email"
           id="email"
           autoComplete="off"
           required
@@ -39,8 +39,9 @@ function SignUp() {
         </label>
         <input
           className=" w-full mb-6  outline-0 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5   "
-          type="text"
+          type="password"
           id="password"
+
         />
         <button className="bg-blue-700 py-[14px] w-full rounded-lg text-white font-light text-[15px] mb-6">
           Login to your account
