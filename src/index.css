@@ -1,44 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@100;200;300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/inter-v13-latin-regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  src: url("../fonts/inter-v13-latin-500.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  src: url("../fonts/inter-v13-latin-600.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/inter-v13-latin-700.woff2") format("woff2");
-}
-
+ 
 @layer components {
   .max-container {
-    width: 100;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     @apply px-10;
+  }
+  main {
+    flex-grow: 1;
+  }
+  body {
+    font-family: "Karla", sans-serif;
+  }
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+
+  #root {
+    @apply flex flex-col
+  }
+  .animation {
+    @apply transition duration-300;
   }
 }
