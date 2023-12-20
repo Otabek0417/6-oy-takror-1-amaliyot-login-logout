@@ -13,8 +13,8 @@ function SignUp() {
         autoPlay
         loop
       ></video>
-      <div className="grid  h-screen w-full  place-items-center bg-black opacity-50 ">
-        <form className=" w-full max-w-[400px] rounded-[20px] bg-slate-100 opacity-[0.7]">
+      <div className="grid h-screen w-full place-items-center bg-black bg-opacity-50">
+        <form className=" w-full max-w-[400px] rounded-[20px] bg-slate-100 bg-opacity-30 ">
           <div className="p-[32px]">
             <h1 className="mb-10 text-[32px] text-gray-900">SignUp</h1>
             <label
