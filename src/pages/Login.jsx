@@ -14,6 +14,12 @@ function Login() {
     e.preventDefault();
     form.current.reset();
   };
+
+  const handleEnterWithGoogle = (e) => {
+    e.preventDefault();
+    enterWithGoogle();
+  };
+
   return (
     <div className="relative grid h-screen place-items-center">
       <video
@@ -61,7 +67,7 @@ function Login() {
               ref={password}
             />
             <button
-              onClick={() => enterWithGoogle()}
+              onClick={handleEnterWithGoogle()}
               className="mb-6 w-full rounded-lg bg-neutral-100
             py-3 text-lg font-medium text-black"
             >
