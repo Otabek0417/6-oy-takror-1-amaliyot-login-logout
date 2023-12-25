@@ -1,6 +1,20 @@
-import React from "react";
+import { useRef } from "react";
 import SignupVideo from "../videos/singup-video.mp4";
+import { Link } from "react-router-dom";
+import { useSignUp } from "../hooks/useSignUp";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 function SignUp() {
+  const { spinner } = useGlobalContext();
+  const { isPending, error, signup } = useSignUp();
+  const form = useRef();
+  const name = useRef();
+  const email = useRef();
+  const password = useRef();
+  const handleSubmit = (e) => {
+    signup(name.current.value, email.current.value, password.current.value);
+    e.preventDefault();
+    form.current.reset();
+  };
   return (
     <div
       className="relative h-screen
@@ -13,10 +27,14 @@ function SignUp() {
         autoPlay
         loop
       ></video>
-      <div className="grid h-screen w-full place-items-center bg-black bg-opacity-50">
-        <form className=" w-full max-w-[400px] rounded-[20px] bg-slate-100 bg-opacity-30 ">
+      <div className="grid h-screen w-full place-items-center bg-black bg-opacity-60">
+        <form
+          ref={form}
+          onSubmit={handleSubmit}
+          className=" w-full max-w-[400px] rounded-[20px] bg-slate-100 bg-opacity-30"
+        >
           <div className="p-[32px]">
-            <h1 className="mb-10 text-[32px] text-gray-900">SignUp</h1>
+            <h1 className="mb-4 text-[32px] text-gray-900">SignUp</h1>
             <label
               className="mb-2 block text-base font-medium text-gray-900 "
               htmlFor="email"
@@ -24,11 +42,12 @@ function SignUp() {
               Your name
             </label>
             <input
-              className="mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 outline-0   focus:border-blue-500 focus:ring-blue-500"
+              className="mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 outline-[3px] focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
               type="text"
               id="email"
               autoComplete="off"
               required
+              ref={name}
             />
             <label
               className="mb-2 block text-base font-medium text-gray-900"
@@ -37,11 +56,12 @@ function SignUp() {
               Email
             </label>
             <input
-              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 outline-0 focus:border-blue-500  focus:ring-blue-500 "
+              className=" text-gray-900outline-[3px] mb-6  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg focus:outline-dotted focus:outline-[3px] focus:outline-blue-600 "
               type="email"
               id="email"
               autoComplete="off"
               required
+              ref={email}
             />
             <label
               className="mb-2 block text-base font-medium text-gray-900 "
@@ -50,13 +70,23 @@ function SignUp() {
               Password
             </label>
             <input
-              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 outline-0 focus:border-blue-500  focus:ring-blue-500"
+              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
               type="password"
               id="password"
+              required
+              ref={password}
             />
-            <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-[15px] font-light text-white">
-              Login to your account
+            <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-base font-light text-white">
+              <div className="flex items-center justify-center gap-3">
+                {isPending ? spinner() : ""} Signup
+              </div>
             </button>
+            <div className="flex justify-center  gap-2">
+              <span className="text-gray-900 ">Do you have an account?</span>
+              <Link to={"/login"}>
+                <button className="text-sky-600">Login</button>
+              </Link>
+            </div>
           </div>
         </form>
       </div>

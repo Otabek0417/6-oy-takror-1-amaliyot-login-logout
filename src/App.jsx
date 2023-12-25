@@ -1,31 +1,47 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import { ProtoctedRoutes } from "./components/ProtoctedRoutes";
+import { useGlobalContext } from "./hooks/useGlobalContext";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseConfig";
+
 function App() {
+  const { user, isAuthReady, dispatch } = useGlobalContext();
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <RootLayout />,
-      // children: [
-      //   {
-      //     index: true,
-      //     element: <Home />,
-      //   },
-      // ],
+      element: (
+        <ProtoctedRoutes user={user}>
+          <RootLayout />
+        </ProtoctedRoutes>
+      ),
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate to={"/"} /> : <Login />,
     },
     {
       path: "/signup",
-      element: <SignUp />,
+      element: user ? <Navigate to={"/"} /> : <SignUp />,
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch({ type: "LOGIN", payload: user });
+      dispatch({ type: "IS_AUTH_READY" });
+    });
+  }, []);
+
+  return isAuthReady && <RouterProvider router={router} />;
 }
 
 export default App;
