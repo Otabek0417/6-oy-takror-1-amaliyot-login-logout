@@ -3,9 +3,11 @@ import SignupVideo from "../videos/singup-video.mp4";
 import { Link } from "react-router-dom";
 import { useSignUp } from "../hooks/useSignUp";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useLogin } from "../hooks/useLogin";
 function SignUp() {
   const { spinner } = useGlobalContext();
   const { isPending, error, signup } = useSignUp();
+  const { enterWithGoogle } = useLogin();
   const form = useRef();
   const name = useRef();
   const email = useRef();
@@ -15,6 +17,11 @@ function SignUp() {
     e.preventDefault();
     form.current.reset();
   };
+  const handleEnterWithGoogle = (e) => {
+    e.preventDefault();
+    enterWithGoogle();
+  };
+
   return (
     <div
       className="relative h-screen
@@ -42,7 +49,7 @@ function SignUp() {
               Your name
             </label>
             <input
-              className="mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 outline-[3px] focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
+              className="mb-4 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 outline-[3px] focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
               type="text"
               id="email"
               autoComplete="off"
@@ -56,7 +63,7 @@ function SignUp() {
               Email
             </label>
             <input
-              className=" text-gray-900outline-[3px] mb-6  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg focus:outline-dotted focus:outline-[3px] focus:outline-blue-600 "
+              className=" text-gray-900outline-[3px] mb-4  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg focus:outline-dotted focus:outline-[3px] focus:outline-blue-600 "
               type="email"
               id="email"
               autoComplete="off"
@@ -76,10 +83,18 @@ function SignUp() {
               required
               ref={password}
             />
-            <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-base font-light text-white">
+
+            <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-lg font-light text-white">
               <div className="flex items-center justify-center gap-3">
                 {isPending ? spinner() : ""} Signup
               </div>
+            </button>
+            <button
+              onClick={handleEnterWithGoogle}
+              className="mb-6 w-full rounded-lg bg-neutral-100
+            py-3 text-lg font-medium text-black"
+            >
+              Google
             </button>
             <div className="flex justify-center  gap-2">
               <span className="text-gray-900 ">Do you have an account?</span>

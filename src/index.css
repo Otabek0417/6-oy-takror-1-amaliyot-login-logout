@@ -4,8 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
- 
 @layer components {
+  * {
+    user-select: none;
+  }
   .max-container {
     width: 100%;
     max-width: 1200px;
@@ -25,9 +27,10 @@
   }
 
   #root {
-    @apply flex flex-col
+    @apply flex flex-col;
   }
   .animation {
     @apply transition duration-300;
   }
+  
 }

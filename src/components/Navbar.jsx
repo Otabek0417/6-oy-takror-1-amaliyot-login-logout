@@ -3,7 +3,7 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { toast } from "react-toastify";
-
+import { Link } from "react-router-dom";
 function Navbar() {
   const { user, spinner } = useGlobalContext();
   const [isPending, setIspending] = useState(false);
@@ -44,9 +44,11 @@ function Navbar() {
               </div>
             </button>
 
-            <button className=" animation rounded-md bg-emerald-400 px-2 py-1  text-white hover:bg-emerald-300 md:px-3 md:py-2">
-              create
-            </button>
+            <Link to={"create"}>
+              <button className=" animation rounded-md bg-emerald-400 px-2 py-1  text-white hover:bg-emerald-300 md:px-3 md:py-2">
+                create
+              </button>
+            </Link>
           </div>
         </nav>
       </div>
