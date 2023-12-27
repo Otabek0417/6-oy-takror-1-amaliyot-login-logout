@@ -4,17 +4,18 @@ import { useDoc } from "../hooks/useDoc";
 import Slider from "../pages/Slider";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import Loader from "./Loader";
 
 function Recipe() {
   const { id } = useParams();
   const { error, isPending, recipe } = useDoc(id);
   console.log(recipe);
   return (
-    <div className="pb-5 pt-5 md:mt-20 ">
-      {isPending && <h1>Loading...</h1>}
+    <div className="pb-6 pt-6 md:mt-20 ">
+      {isPending && <Loader />}
       <div
         href="#"
-        class="mm:flex-row flex flex-col items-center gap-7 rounded-lg border border-gray-200 bg-white p-4 shadow  dark:border-gray-700 dark:bg-gray-800  md:flex-row md:p-6"
+        class="md:h-[400px] flex flex-col items-center gap-5 rounded-lg border border-gray-200 bg-white p-4 shadow  dark:border-gray-700 dark:bg-gray-800  md:flex-row md:p-6"
       >
         <Slider recipe={recipe} />
         <div class="flex flex-col justify-between  leading-normal">
@@ -30,10 +31,10 @@ function Recipe() {
           <span className="mb-0 text-lg font-bold text-gray-700 dark:text-gray-400 md:mb-2 ">
             Method:
           </span>
-          <span className="line-clamp-3 text-gray-700 dark:text-gray-400 md:line-clamp-none ">
+          <span className="line-clamp-3 mb-2 text-gray-700 dark:text-gray-400 md:line-clamp-none ">
             {recipe && recipe.method}
           </span>
-          <span className="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">
+          <span className=" text-lg font-bold text-gray-700 dark:text-gray-400">
             CookingTime:{" "}
             <span className="text-base font-normal">
               {recipe && recipe.cookingTime}
@@ -41,7 +42,7 @@ function Recipe() {
           </span>
           <Link to={"/"}>
             <div className="flex flex-col items-end">
-              <button class=" focus:shadow-outline-blue flex w-[100px] items-center gap-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 focus:outline-none active:bg-blue-800">
+              <button class=" focus:shadow-outline-blue animation flex w-[100px] items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 focus:outline-none active:bg-blue-800">
                 <MdOutlineKeyboardBackspace />
                 Home
               </button>

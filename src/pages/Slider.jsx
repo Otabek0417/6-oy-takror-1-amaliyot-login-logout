@@ -1,15 +1,15 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Navigation, Pagination, Scrollbar, } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 function Slider({ recipe }) {
   console.log(recipe);
   return (
-    <div className="w-full md:max-w-[500px] ">
-      <Swiper 
+    <div className="w-full md:max-w-[450px] ">
+      <Swiper
         modules={[Navigation, Pagination, Scrollbar]}
         // spaceBetween={0}
         slidesPerView={1}
@@ -22,7 +22,7 @@ function Slider({ recipe }) {
             return (
               <SwiperSlide key={image}>
                 <img
-                  className=" h-[250px] rounded-lg md:h-[350px] w-full md:max-w-[500px] md:rounded-l-lg object-cover"
+                  className=" h-[250px] w-full rounded-lg object-cover md:h-[350px] md:max-w-[450px] md:rounded-l-lg"
                   src={image}
                   alt="..."
                 />

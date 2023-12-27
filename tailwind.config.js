@@ -2,14 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
-
-  // ...
   theme: {
     screens: {
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 
-      md: "950px",
+      md: "955px",
       // => @media (min-width: 768px) { ... }
       
       lg: "1024px",
