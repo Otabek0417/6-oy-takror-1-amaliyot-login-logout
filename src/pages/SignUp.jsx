@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useSignUp } from "../hooks/useSignUp";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useLogin } from "../hooks/useLogin";
+import { FcGoogle } from "react-icons/fc";
+
 function SignUp() {
   const { spinner } = useGlobalContext();
   const { isPending, error, signup } = useSignUp();
@@ -83,19 +85,19 @@ function SignUp() {
               required
               ref={password}
             />
-
+            <button
+              onClick={handleEnterWithGoogle}
+              className="mb-6 flex w-full items-center
+            justify-center gap-2 rounded-lg bg-neutral-100 py-3 text-lg font-medium text-black"
+            >
+              <FcGoogle /> Google
+            </button>
             <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-lg font-light text-white">
               <div className="flex items-center justify-center gap-3">
                 {isPending ? spinner() : ""} Signup
               </div>
             </button>
-            <button
-              onClick={handleEnterWithGoogle}
-              className="mb-6 w-full rounded-lg bg-neutral-100
-            py-3 text-lg font-medium text-black"
-            >
-              Google
-            </button>
+
             <div className="flex justify-center  gap-2">
               <span className="text-gray-900 ">Do you have an account?</span>
               <Link to={"/login"}>

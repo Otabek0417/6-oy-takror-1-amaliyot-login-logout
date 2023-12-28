@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import LoginVideo from "../videos/login-video.mp4";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useLogin } from "../hooks/useLogin";
+import { FcGoogle } from "react-icons/fc";
+
 function Login() {
   const { spinner } = useGlobalContext();
   const { isPending, error, login, enterWithGoogle } = useLogin();
@@ -69,9 +71,9 @@ function Login() {
             <button
               onClick={handleEnterWithGoogle}
               className="mb-6 w-full rounded-lg bg-neutral-100
-            py-3 text-lg font-medium text-black"
+            py-3 text-lg font-medium text-black flex justify-center items-center gap-2"
             >
-              Google
+              <FcGoogle /> Google
             </button>
             <button className="mb-6 w-full rounded-lg bg-blue-700 py-3 text-lg font-medium text-white">
               <div className="flex items-center justify-center gap-3">
