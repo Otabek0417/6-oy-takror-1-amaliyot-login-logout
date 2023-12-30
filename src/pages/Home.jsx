@@ -6,7 +6,6 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Home() {
   const { user } = useGlobalContext();
-  console.log(user);
   const {
     documents: recipies,
     isPending,

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Recipes({ recipies }) {
   console.log(recipies);
   return (
-    <ul className="mt-10 grid md:grid-cols-3 gap-5">
+    <ul className="mt-10 grid gap-5 md:grid-cols-3">
       {recipies &&
         recipies.map((recipe) => {
           const { id, title, cookingTime, time, images, ingredients, method } =

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+
 function Navbar() {
   const { user, spinner } = useGlobalContext();
   const [isPending, setIspending] = useState(false);
@@ -18,6 +19,24 @@ function Navbar() {
       });
   };
 
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : [],
+  );
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    console.log(localTheme);
+    document.querySelector("html").setAttribute("class", localTheme);
+  }, [theme]);
+
+  const handleChange = (e) => {
+    console.log(e);
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
   return (
     <header className="bg-neutral-200 py-3 dark:bg-slate-700 md:py-5">
       <div className="max-container flex flex-col items-center md:flex-row md:justify-between">
@@ -43,12 +62,17 @@ function Navbar() {
                 {isPending ? spinner() : ""} logaut
               </div>
             </button>
-
             <Link to={"create"}>
               <button className=" animation rounded-md bg-emerald-400 px-2 py-1  text-white hover:bg-emerald-300 md:px-3 md:py-2">
                 create
               </button>
             </Link>
+            <input
+              type="checkbox"
+              onChange={handleChange}
+              checked={theme === "dark" ? true : false}
+            />
+            
           </div>
         </nav>
       </div>
