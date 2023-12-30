@@ -47,11 +47,11 @@ function Login() {
               Email address
             </label>
             <input
-              className=" mb-4 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 focus:outline-dotted focus:outline-[3px] focus:outline-blue-600 "
+              className=" mb-4 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-base text-gray-900  focus:border-blue-500 focus:ring-blue-500 "
               type="email"
               id="email"
               autoComplete="off"
-              // required
+              required
               ref={email}
             />
             <label
@@ -61,21 +61,21 @@ function Login() {
               Password
             </label>
             <input
-              className="mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-xl text-gray-900 outline-[3px] focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
+              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
               type="password"
               id="password"
               autoComplete="off"
-              // required
+              required
               ref={password}
             />
             <button
               onClick={handleEnterWithGoogle}
-              className="mb-6 w-full rounded-lg bg-neutral-100
-            py-3 text-lg font-medium text-black flex justify-center items-center gap-2"
+              className="mb-6 flex w-full items-center
+            justify-center gap-2 rounded-lg bg-neutral-100 p-2.5 text-base font-bold text-black"
             >
               <FcGoogle /> Google
             </button>
-            <button className="mb-6 w-full rounded-lg bg-blue-700 py-3 text-lg font-medium text-white">
+            <button className="mb-6 w-full rounded-lg bg-blue-700 py-2.5 text-base font-medium text-white">
               <div className="flex items-center justify-center gap-3">
                 {isPending ? spinner() : ""}
                 Login to your account

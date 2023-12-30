@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
-export function useCollection(c) {
+export function useCollection(c, _query) {
   const [documents, setDocuments] = useState(null);
   const [isPending, setIspending] = useState(false);
   const [error, setError] = useState(null);
-  const ref = collection(db, c);
+  const q = query(collection(db, c), where(..._query));
   useEffect(() => {
     setIspending(true);
     const insup = onSnapshot(
-      ref,
+      q,
       (snapshot) => {
         const results = [];
         snapshot.docs.forEach((item) => {

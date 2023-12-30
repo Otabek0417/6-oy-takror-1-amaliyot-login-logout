@@ -15,7 +15,7 @@ function Recipe() {
       {isPending && <Loader />}
       <div
         href="#"
-        class="md:h-[400px] flex flex-col items-center gap-5 rounded-lg border border-gray-200 bg-white p-4 shadow  dark:border-gray-700 dark:bg-gray-800  md:flex-row md:p-6"
+        class="flex flex-col items-center gap-5 rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700  dark:bg-gray-800 md:h-[400px]  md:flex-row md:p-6"
       >
         <Slider recipe={recipe} />
         <div class="flex flex-col justify-between  leading-normal">
@@ -26,12 +26,12 @@ function Recipe() {
             Ingredients:
           </span>
           <span className="mb-0 text-gray-700 dark:text-gray-400 md:mb-4  ">
-            {recipe && recipe.ingredients.join(",")}
+            {recipe && recipe.ingredients}
           </span>
           <span className="mb-0 text-lg font-bold text-gray-700 dark:text-gray-400 md:mb-2 ">
             Method:
           </span>
-          <span className="line-clamp-3 mb-2 text-gray-700 dark:text-gray-400 md:line-clamp-none ">
+          <span className="mb-2 line-clamp-3 text-gray-700 dark:text-gray-400 md:line-clamp-none ">
             {recipe && recipe.method}
           </span>
           <span className=" text-lg font-bold text-gray-700 dark:text-gray-400">

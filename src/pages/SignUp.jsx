@@ -42,7 +42,7 @@ function SignUp() {
           onSubmit={handleSubmit}
           className=" w-full max-w-[400px] rounded-[20px] bg-slate-100 bg-opacity-30"
         >
-          <div className="p-[32px]">
+          <div className="p-6">
             <h1 className="mb-4 text-[32px] text-gray-900">SignUp</h1>
             <label
               className="mb-2 block text-base font-medium text-gray-900 "
@@ -51,7 +51,7 @@ function SignUp() {
               Your name
             </label>
             <input
-              className="mb-4 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 outline-[3px] focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
+              className="mb-3 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
               type="text"
               id="email"
               autoComplete="off"
@@ -65,7 +65,7 @@ function SignUp() {
               Email
             </label>
             <input
-              className=" text-gray-900outline-[3px] mb-4  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg focus:outline-dotted focus:outline-[3px] focus:outline-blue-600 "
+              className=" mb-3 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
               type="email"
               id="email"
               autoComplete="off"
@@ -79,7 +79,7 @@ function SignUp() {
               Password
             </label>
             <input
-              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-lg text-gray-900 focus:outline-dotted focus:outline-[3px] focus:outline-blue-600"
+              className=" mb-6 block  w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
               type="password"
               id="password"
               required
@@ -87,12 +87,12 @@ function SignUp() {
             />
             <button
               onClick={handleEnterWithGoogle}
-              className="mb-6 flex w-full items-center
-            justify-center gap-2 rounded-lg bg-neutral-100 py-3 text-lg font-medium text-black"
+              className="mb-3 flex w-full items-center
+            justify-center gap-2 rounded-lg bg-neutral-100 py-2.5 text-base font-bold text-black"
             >
               <FcGoogle /> Google
             </button>
-            <button className="mb-6 w-full rounded-lg bg-blue-700 py-[14px] text-lg font-light text-white">
+            <button className="mb-3 w-full rounded-lg bg-blue-700 py-2.5 text-base font-light text-white">
               <div className="flex items-center justify-center gap-3">
                 {isPending ? spinner() : ""} Signup
               </div>
